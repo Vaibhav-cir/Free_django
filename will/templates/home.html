@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+  {% if user.is_authenticated %}
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold" style="color:#007bff;">Weapon List</h2>
+    <a href="{% url 'add_weapon' %}" class="btn btn-success">+ Add Weapon</a>
+  </div>
+  <div class="weapon-counter" >
+    ⚔️ Total Weapons: {{ weapon_count }}
+  </div>
+
+
+  <!-- Search Input -->
+  <div class="mb-3">
+    <input
+      type="text"
+      id="searchInput"
+      class="form-control"
+      placeholder="🔍 Search weapon, user or trainer..."
+    />
+  </div>
+
+  <!-- Weapon Table -->
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Weapon Name</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Weapon Trainer</th>
+        <th scope="col" class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="weaponTable">
+      {% for weapon in page_obj %}
+      <tr>
+        <td>{{ weapon.weapon_name }}</td>
+        <td>{{ weapon.user_name }}</td>
+        <td>{{ weapon.weapon_trainer }}</td>
+        <td class="text-center">
+          <a href="{% url 'edit_weapon' weapon.id %}" class="btn btn-warning btn-sm">Edit</a>
+          <a href="{% url 'delete_weapon' weapon.pk %}" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="text-center text-muted">No weapons found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  {% if page_obj.has_other_pages %}
+  <nav>
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">Previous</span>
+      </li>
+      {% endif %}
+
+      <li class="page-item disabled">
+        <span class="page-link">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+      </li>
+
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">Next</span>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+  {% else %}
+  <div class="alert alert-warning mt-5 text-center shadow-sm">
+    <h4 class="fw-bold mb-3">You’re not logged in ⚠️</h4>
+    <p>Please <a href="{% url 'login' %}" class="btn btn-primary">Log in</a> to view weapon data.</p>
+  </div>
+  {% endif %}
+</div>
+
+<!-- Search Script -->
+{% if user.is_authenticated %}
+<script>
+  document.getElementById("searchInput").addEventListener("keyup", function () {
+    let value = this.value.toLowerCase();
+    let rows = document.querySelectorAll("#weaponTable tr");
+    rows.forEach((row) => {
+      row.style.display = row.innerText.toLowerCase().includes(value) ? "" : "none";
+    });
+  });
+</script>
+{% endif %}
+
+{% endblock %}

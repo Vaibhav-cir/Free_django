@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="fw-bold text-primary mb-4">About Weapon Vault</h2>
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <p class="lead">
+        Welcome to <strong>Weapon Vault</strong> — a place where warriors, trainers, and
+        enthusiasts can manage, track, and explore their favorite weapons.  
+        This system lets you record each weapon’s details, link them with users and trainers,
+        and organize everything easily.
+      </p>
+
+      <hr>
+
+      <h4 class="text-secondary mt-4">🔹 Purpose</h4>
+      <p>
+        This project was built to simplify data handling for weapon information using the
+        power of Django. It aims to make learning and management both fun and structured.
+      </p>
+
+      <h4 class="text-secondary mt-4">🔹 Features</h4>
+      <ul>
+        <li>Add, Edit, and Delete weapon entries</li>
+        <li>Search instantly through all data</li>
+        <li>Paginated and responsive table layout</li>
+        <li>Modern and clean Bootstrap UI</li>
+      </ul>
+
+      <h4 class="text-secondary mt-4">🔹 Future Plans</h4>
+      <p>
+        Soon, we plan to add weapon stats charts, and user-specific dashboards.
+      </p>
+
+      <div class="text-muted small mt-4">
+        © {{ year }} Weapon Vault. Designed and developed by Vaibhav.
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

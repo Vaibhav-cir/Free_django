@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <body>
+        <h2>Add Weapon_User</h2>
+        {% extends 'base.html' %}
+
+        {% block content %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Save</button>
+            <a href="{% url 'home' %}" class="btn btn-success">Back</a>
+        </form>
+    </body>
+        {% endblock %}
+</head>
+</html>

@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Weapon Tracker</title>
+
+    <style>
+        /* Remove margins/padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Fullscreen video background */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(100%);
+        }
+
+        /* Centered login box */
+        .login-container {
+            height: 100vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 5%;
+        }
+
+        .login-box {
+            background: rgba(0, 0, 0, 0.35);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 150, 255, 0.5);
+            width: 350px;
+            color: white;
+        }
+
+        .login-box h1 {
+            color: #00aaff;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        .login-box label {
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            font-family: Verdana;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(90deg, #007bff, #00d4ff);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: Verdana;
+        }
+
+        .login-box button:hover {
+            background: linear-gradient(90deg, #005eff, #00b8ff);
+        }
+
+        .register-link {
+            margin-top: 15px;
+            font-size: 14px;
+            font-family: Verdana;
+        }
+
+        .register-link a {
+            color: #00bfff;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop playsinline class="video-bg">
+        <source src="{% static 'videos/background.mp4' %}" type="video/mp4">
+    </video>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Login</h1>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Enter username" required>
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter password" required>
+                <button type="submit">Login</button>
+            </form>
+            <div class="register-link">
+                Don’t have an account? <a href="{% url 'register' %}">Register here</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
