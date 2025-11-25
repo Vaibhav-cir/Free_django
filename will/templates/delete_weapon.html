@@ -1,13 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Are you sure you want to delete this weapon?</h2>
+<div style="max-width: 500px; margin: 4rem auto;">
+  <div class="glass-card animate-fade-in" style="text-align: center;">
+    <i class="ri-error-warning-line" style="font-size: 4rem; color: #fb7185; margin-bottom: 1rem; display: block;"></i>
 
-  <p><strong>{{ weapon.weapon_name }}</strong> (User: {{ weapon.user_name }}, Trainer: {{ weapon.weapon_trainer }})</p>
+    <h2 style="margin-bottom: 1rem;">Delete Weapon?</h2>
+    <p style="color: var(--text-muted); margin-bottom: 2rem;">
+      Are you sure you want to delete <strong>"{{ weapon.weapon_name }}"</strong>? This action cannot be undone.
+    </p>
 
-  <form method="POST">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Yes, Delete</button>
-    <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
-  </form>
+    <form method="post">
+      {% csrf_token %}
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <button type="submit" class="btn-primary"
+          style="background: #fb7185; box-shadow: 0 4px 15px rgba(251, 113, 133, 0.4); padding: 0.8rem 2rem; border-radius: 8px;">
+          Yes, Delete
+        </button>
+        <a href="{% url 'home' %}" class="btn-outline"
+          style="padding: 0.8rem 2rem; border-radius: 8px; display: flex; align-items: center;">
+          Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}

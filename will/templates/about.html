@@ -1,42 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-5">
-  <h2 class="fw-bold text-primary mb-4">About Weapon Vault</h2>
+<div style="max-width: 800px; margin: 2rem auto;">
+  <div class="glass-card animate-fade-in">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h1
+        style="font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Weapon Tracker</h1>
+      <p style="color: var(--text-muted); font-size: 1.2rem;">Advanced Inventory Management System</p>
+    </div>
 
-  <div class="card shadow-sm border-0">
-    <div class="card-body">
-      <p class="lead">
-        Welcome to <strong>Weapon Vault</strong> — a place where warriors, trainers, and
-        enthusiasts can manage, track, and explore their favorite weapons.  
-        This system lets you record each weapon’s details, link them with users and trainers,
-        and organize everything easily.
-      </p>
-
-      <hr>
-
-      <h4 class="text-secondary mt-4">🔹 Purpose</h4>
-      <p>
-        This project was built to simplify data handling for weapon information using the
-        power of Django. It aims to make learning and management both fun and structured.
-      </p>
-
-      <h4 class="text-secondary mt-4">🔹 Features</h4>
-      <ul>
-        <li>Add, Edit, and Delete weapon entries</li>
-        <li>Search instantly through all data</li>
-        <li>Paginated and responsive table layout</li>
-        <li>Modern and clean Bootstrap UI</li>
-      </ul>
-
-      <h4 class="text-secondary mt-4">🔹 Future Plans</h4>
-      <p>
-        Soon, we plan to add weapon stats charts, and user-specific dashboards.
-      </p>
-
-      <div class="text-muted small mt-4">
-        © {{ year }} Weapon Vault. Designed and developed by Vaibhav.
+    <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+      <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px;">
+        <i class="ri-shield-flash-line"
+          style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem; display: block;"></i>
+        <h3>Secure Tracking</h3>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">Keep track of all your weaponry with enterprise-grade
+          security and reliability.</p>
       </div>
+
+      <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px;">
+        <i class="ri-speed-line"
+          style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem; display: block;"></i>
+        <h3>Fast & Modern</h3>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">Built with the latest technologies for lightning-fast
+          performance and a smooth experience.</p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--glass-border);">
+      <p style="color: var(--text-muted);">Version 2.0.0 • Built with Django & Vanilla CSS</p>
     </div>
   </div>
 </div>

@@ -1,18 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <body>
-        <h2>Add Weapon_User</h2>
-        {% extends 'base.html' %}
+{% extends 'base.html' %}
 
-        {% block content %}
-        <form method="POST">
+{% block content %}
+<div style="max-width: 600px; margin: 2rem auto;">
+    <div class="glass-card animate-fade-in">
+        <h2 style="margin-bottom: 2rem;"><i class="ri-add-circle-line"></i> Add New Weapon</h2>
+
+        <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-success">Save</button>
-            <a href="{% url 'home' %}" class="btn btn-success">Back</a>
+
+            {% for field in form %}
+            <div class="form-group">
+                <label>{{ field.label }}</label>
+                {{ field }}
+                {% for error in field.errors %}
+                <small style="color: #fb7185;">{{ error }}</small>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button type="submit" class="btn-primary" style="flex: 1; padding: 1rem; border-radius: 8px;">
+                    Save Weapon
+                </button>
+                <a href="{% url 'home' %}" class="btn-outline"
+                    style="padding: 1rem 2rem; border-radius: 8px; display: flex; align-items: center;">
+                    Cancel
+                </a>
+            </div>
         </form>
-    </body>
-        {% endblock %}
-</head>
-</html>
+    </div>
+</div>
+{% endblock %}

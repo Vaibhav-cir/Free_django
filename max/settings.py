@@ -138,9 +138,3 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = 'login'
 
-OPTIONS: {
-    'context_processors': [
-        # default Django ones ...
-        'weapons.context_processors.weapon_count',
-    ],
-}
